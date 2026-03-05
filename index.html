@@ -3,47 +3,64 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Два дивана</title>
-  <meta name="description" content="Лаконичный каталог: только два дивана." />
+  <title>Каталог диванов</title>
+  <meta name="description" content="Лаконичный каталог бескаркасных диванов: unnamed, ДеФранс, Тофу и Дадли." />
   <style>
+    @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap");
+
     :root {
-      --bg-1: #f7f4ef;
-      --bg-2: #e8efe8;
-      --ink: #1f1f1f;
-      --muted: #606060;
-      --accent: #199c68;
-      --card: #ffffff;
-      --shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
-      --radius: 22px;
-      --font-sans: Arial, sans-serif;
-      --font-serif: Georgia, "Times New Roman", serif;
+      --bg: #f4f1eb;
+      --surface: #ffffff;
+      --surface-soft: #f8f5f0;
+      --ink: #22201d;
+      --muted: #6d675f;
+      --accent: #b7512e;
+      --accent-2: #1e8f79;
+      --line: #e6dfd4;
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --shadow-soft: 0 16px 34px rgba(34, 26, 17, 0.08);
+      --shadow-strong: 0 24px 50px rgba(34, 26, 17, 0.14);
+      --font-sans: "Manrope", "Arial", sans-serif;
+      --font-serif: "Cormorant Garamond", "Times New Roman", serif;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
       font-family: var(--font-sans);
       color: var(--ink);
       background:
-        radial-gradient(1000px 600px at 10% -10%, #fff6e8 0%, transparent 60%),
-        radial-gradient(900px 600px at 110% 10%, #e1f1e7 0%, transparent 55%),
-        linear-gradient(135deg, var(--bg-1), var(--bg-2));
+        radial-gradient(1200px 640px at -10% -15%, #fff8ef 0%, transparent 65%),
+        radial-gradient(960px 580px at 115% -5%, #efe9de 0%, transparent 62%),
+        linear-gradient(180deg, #f8f5ef 0%, var(--bg) 100%);
       min-height: 100vh;
     }
 
-    a { color: inherit; }
+    a {
+      color: inherit;
+    }
 
     .topbar {
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 15;
+      background: rgba(248, 245, 239, 0.86);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(96, 82, 61, 0.12);
     }
 
     .topbar__inner {
-      max-width: 1100px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 14px 20px;
+      padding: 14px 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -67,55 +84,74 @@
 
     .topbar__brand {
       font-family: var(--font-serif);
-      font-size: 20px;
+      font-size: 30px;
       font-weight: 700;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
+      line-height: 0.95;
     }
 
     .topbar__nav {
       display: flex;
-      gap: 14px;
-      font-size: 14px;
+      gap: 10px;
+      font-size: 13px;
       font-weight: 600;
-      text-transform: uppercase;
       letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .topbar__nav a {
       text-decoration: none;
-      color: var(--ink);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.72);
+      padding: 8px 14px;
+      border-radius: 999px;
+      transition: all 0.25s ease;
     }
 
     .topbar__nav a:hover {
+      border-color: rgba(183, 81, 46, 0.45);
       color: var(--accent);
+      transform: translateY(-1px);
     }
 
     .topbar__contacts,
     .topbar__socials {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       font-size: 14px;
       flex-wrap: wrap;
     }
 
+    .topbar__link {
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .topbar__link:hover {
+      color: var(--accent);
+    }
+
     .social-icon {
-      width: 34px;
-      height: 34px;
+      width: 36px;
+      height: 36px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      background: #ffffff;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 18px rgba(40, 30, 20, 0.08);
       text-decoration: none;
-      color: var(--ink);
+      color: #2f2a24;
+      transition: all 0.25s ease;
     }
 
     .social-icon:hover {
       color: var(--accent);
-      border-color: rgba(25, 156, 104, 0.4);
+      border-color: rgba(183, 81, 46, 0.38);
+      transform: translateY(-2px);
     }
 
     .social-icon svg {
@@ -124,178 +160,218 @@
       display: block;
     }
 
-    .topbar .social-icon {
-      color: var(--ink);
-    }
-
-    .topbar__link {
-      text-decoration: none;
-      color: var(--ink);
-      font-weight: 500;
-    }
-
-    .topbar__link:hover {
-      color: var(--accent);
-    }
-
     .page {
-      max-width: 1100px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 56px 20px 80px;
+      padding: 56px 22px 86px;
     }
 
     .hero {
+      position: relative;
       display: grid;
       gap: 14px;
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 54px;
+      padding: 34px 24px 18px;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.82), rgba(255, 252, 248, 0.64));
+      border: 1px solid rgba(165, 137, 104, 0.16);
+      border-radius: calc(var(--radius-lg) + 6px);
+      box-shadow: var(--shadow-soft);
     }
 
     .hero__eyebrow {
       font-size: 12px;
-      letter-spacing: 0.3em;
+      letter-spacing: 0.34em;
       text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 600;
+      color: var(--accent-2);
+      font-weight: 700;
     }
 
     .hero__title {
       font-family: var(--font-serif);
-      font-size: clamp(32px, 4.5vw, 56px);
-      font-weight: 700;
+      font-size: clamp(42px, 6vw, 76px);
+      font-weight: 600;
       margin: 0;
+      letter-spacing: -0.01em;
+      line-height: 0.95;
     }
 
     .hero__subtitle {
       margin: 0 auto;
-      max-width: 620px;
+      max-width: 700px;
       color: var(--muted);
-      font-size: 16px;
+      font-size: 17px;
       line-height: 1.6;
     }
 
     .hero__art {
-      margin: 24px auto 0;
-      max-width: 680px;
+      margin: 18px auto 0;
+      width: min(860px, 100%);
       position: relative;
-      display: flex;
-      justify-content: center;
     }
 
     .hero__art img {
       width: 100%;
       height: auto;
       border-radius: 28px;
-      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
+      box-shadow: var(--shadow-strong);
       display: block;
     }
 
-    .hero__art::before {
+    .hero__art::before,
+    .hero__art::after {
       content: "";
       position: absolute;
-      inset: -18px -18px auto -18px;
-      height: 60%;
-      border-radius: 32px;
-      background: rgba(25, 156, 104, 0.12);
       z-index: -1;
+      border-radius: 999px;
+      filter: blur(1px);
+    }
+
+    .hero__art::before {
+      width: 170px;
+      height: 170px;
+      right: -34px;
+      top: -36px;
+      background: radial-gradient(circle at 30% 30%, rgba(183, 81, 46, 0.36), rgba(183, 81, 46, 0));
+    }
+
+    .hero__art::after {
+      width: 160px;
+      height: 160px;
+      left: -22px;
+      bottom: -20px;
+      background: radial-gradient(circle at 70% 70%, rgba(30, 143, 121, 0.35), rgba(30, 143, 121, 0));
     }
 
     .section {
-      margin: 46px 0;
+      margin: 48px 0;
     }
 
     .section__eyebrow {
       font-size: 12px;
-      letter-spacing: 0.3em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--accent);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .section__title {
       font-family: var(--font-serif);
-      font-size: clamp(26px, 3.5vw, 40px);
-      margin: 12px 0 8px;
-    }
-
-    .section__text {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 760px;
+      font-size: clamp(36px, 5.4vw, 56px);
+      margin: 12px 0 16px;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
     }
 
     .products {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 28px;
+      gap: 26px;
     }
 
     .card {
       position: relative;
-      background: var(--card);
-      border-radius: var(--radius);
+      background: var(--surface);
+      border-radius: var(--radius-lg);
       overflow: hidden;
-      box-shadow: var(--shadow);
+      border: 1px solid rgba(96, 82, 61, 0.12);
+      box-shadow: var(--shadow-soft);
       transform: translateY(18px);
       opacity: 0;
-      animation: cardIn 0.8s ease forwards;
+      animation: cardIn 0.65s ease forwards;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-strong);
     }
 
     .card:nth-child(2) {
-      animation-delay: 0.15s;
+      animation-delay: 0.1s;
+    }
+
+    .card:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    .card:nth-child(4) {
+      animation-delay: 0.3s;
     }
 
     .card__media {
       position: relative;
-      padding-bottom: 70%;
+      padding-bottom: 64%;
       background-size: cover;
       background-position: center;
+    }
+
+    .card__media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(22, 19, 16, 0.05), rgba(22, 19, 16, 0.22));
     }
 
     .card__badge {
       position: absolute;
       top: 16px;
       left: 16px;
-      background: rgba(25, 156, 104, 0.92);
-      color: #ffffff;
-      padding: 6px 12px;
+      z-index: 2;
+      color: #fff;
+      background: rgba(34, 27, 20, 0.78);
+      padding: 7px 13px;
       border-radius: 999px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
     }
 
     .card__body {
-      padding: 20px 22px 24px;
+      padding: 22px 22px 24px;
       display: grid;
-      gap: 10px;
+      gap: 11px;
+      position: relative;
     }
 
     .card__title {
-      font-size: 22px;
-      font-weight: 600;
       margin: 0;
+      font-family: var(--font-serif);
+      font-size: 42px;
+      font-weight: 600;
+      line-height: 0.86;
+      letter-spacing: -0.01em;
     }
 
     .card__text {
       margin: 0;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.58;
       font-size: 14px;
     }
 
     .card__price {
-      font-size: 18px;
+      margin-top: 8px;
+      font-size: 14px;
       font-weight: 700;
       color: var(--ink);
+      border: 1px solid var(--line);
+      background: var(--surface-soft);
+      border-radius: 999px;
+      padding: 10px 14px;
+      width: fit-content;
+      max-width: 100%;
     }
 
     .card__cta {
-      margin-top: 6px;
-      font-weight: 600;
+      margin-top: 2px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       color: var(--accent);
-      text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -303,13 +379,14 @@
 
     .card__cta::after {
       content: "→";
-      font-size: 18px;
+      font-size: 16px;
+      line-height: 1;
     }
 
     .card__hit {
       position: absolute;
       inset: 0;
-      border-radius: var(--radius);
+      border-radius: var(--radius-lg);
       border: none;
       background: transparent;
       cursor: pointer;
@@ -324,53 +401,63 @@
 
     .faq {
       display: grid;
-      gap: 14px;
-      margin-top: 18px;
+      gap: 12px;
+      margin-top: 16px;
     }
 
     .faq__item {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.82);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(96, 82, 61, 0.14);
+      box-shadow: 0 10px 22px rgba(35, 26, 15, 0.07);
       padding: 16px 18px;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      transition: border-color 0.2s ease;
+    }
+
+    .faq__item[open] {
+      border-color: rgba(183, 81, 46, 0.3);
     }
 
     .faq__item summary {
       cursor: pointer;
-      font-weight: 600;
       list-style: none;
+      font-weight: 700;
+      font-size: 15px;
     }
 
-    .faq__item summary::-webkit-details-marker { display: none; }
+    .faq__item summary::-webkit-details-marker {
+      display: none;
+    }
 
     .faq__item p {
       margin: 12px 0 0;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.55;
       font-size: 14px;
     }
 
     .footer {
-      background: #1f1f1f;
-      color: #f2f2f2;
-      margin-top: 60px;
+      margin-top: 70px;
+      background: linear-gradient(145deg, #1f1915, #2d2622);
+      color: #f6f1e9;
     }
 
     .footer__inner {
-      max-width: 1100px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 36px 20px 40px;
+      padding: 38px 22px 42px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 18px;
+      gap: 16px;
     }
 
     .footer__brand {
       font-family: var(--font-serif);
-      font-size: 22px;
-      font-weight: 700;
+      font-size: 34px;
+      line-height: 0.9;
+      font-weight: 600;
     }
 
     .footer__links,
@@ -379,45 +466,45 @@
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      font-size: 14px;
       justify-content: center;
+      font-size: 14px;
     }
 
     .footer__links a,
     .footer__contacts a,
     .footer__socials a {
-      color: #f2f2f2;
       text-decoration: none;
+      color: inherit;
     }
 
     .footer__links a:hover,
     .footer__contacts a:hover,
     .footer__socials a:hover {
-      color: #9de4c4;
+      color: #f6b49e;
     }
 
     .footer .social-icon {
-      background: #2a2a2a;
-      color: #ffffff;
-      border-color: rgba(255, 255, 255, 0.2);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.18);
+      color: #f6f1e9;
+      box-shadow: none;
     }
 
     .footer .social-icon:hover {
-      background: #333333;
-      color: #9de4c4;
-      border-color: rgba(157, 228, 196, 0.6);
+      background: rgba(255, 255, 255, 0.16);
+      color: #ffd2c1;
+      border-color: rgba(255, 255, 255, 0.28);
     }
 
     .footer__copy {
       font-size: 12px;
-      color: #bdbdbd;
+      color: rgba(246, 241, 233, 0.75);
     }
 
     .modal {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(17, 13, 10, 0.7);
       display: none;
       align-items: center;
       justify-content: center;
@@ -430,14 +517,15 @@
     }
 
     .modal__panel {
-      background: #ffffff;
-      border-radius: 20px;
-      max-width: 900px;
+      background: #fff;
+      border-radius: var(--radius-lg);
+      max-width: 980px;
       width: 100%;
       max-height: 90vh;
       overflow: auto;
       padding: 24px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      box-shadow: var(--shadow-strong);
+      border: 1px solid rgba(96, 82, 61, 0.12);
     }
 
     .modal__header {
@@ -449,24 +537,28 @@
     }
 
     .modal__title {
-      font-family: var(--font-serif);
-      font-size: 26px;
       margin: 0;
+      font-family: var(--font-serif);
+      font-size: 42px;
+      font-weight: 600;
+      line-height: 0.9;
     }
 
     .modal__close {
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--accent);
-      border: none;
-      background: transparent;
+      border: 1px solid rgba(183, 81, 46, 0.25);
+      background: #fff9f6;
+      border-radius: 999px;
+      padding: 8px 14px;
       cursor: pointer;
     }
 
     .modal__grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
     }
 
     .modal__grid img {
@@ -475,12 +567,13 @@
       display: block;
       border-radius: 12px;
       cursor: zoom-in;
+      border: 1px solid rgba(96, 82, 61, 0.14);
     }
 
     .modal__zoom {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.82);
       display: none;
       align-items: center;
       justify-content: center;
@@ -495,8 +588,8 @@
     .modal__zoom img {
       max-width: min(92vw, 1200px);
       max-height: 88vh;
-      border-radius: 16px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      border-radius: 18px;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.35);
       cursor: zoom-out;
     }
 
@@ -504,11 +597,11 @@
       position: absolute;
       top: 20px;
       right: 20px;
-      background: #ffffff;
-      border: none;
+      background: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.32);
       border-radius: 999px;
-      padding: 8px 14px;
-      font-weight: 600;
+      padding: 9px 14px;
+      font-weight: 700;
       cursor: pointer;
     }
 
@@ -519,23 +612,87 @@
       }
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 980px) {
       .topbar__inner {
         flex-direction: column;
         align-items: flex-start;
       }
+
       .topbar__left,
       .topbar__right {
         width: 100%;
         justify-content: flex-start;
         text-align: left;
       }
-      .topbar__nav { order: 3; }
-      .topbar__contacts { order: 2; }
-      .topbar__socials { order: 4; }
-      .page { padding: 40px 18px 60px; }
-      .products { grid-template-columns: 1fr; }
-      .card__body { padding: 18px; }
+
+      .topbar__nav {
+        order: 3;
+      }
+
+      .topbar__contacts {
+        order: 2;
+      }
+
+      .topbar__socials {
+        order: 4;
+      }
+
+      .page {
+        padding: 40px 16px 64px;
+      }
+
+      .hero {
+        padding: 26px 14px 10px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar__brand {
+        font-size: 26px;
+      }
+
+      .hero__title {
+        font-size: clamp(34px, 12vw, 52px);
+      }
+
+      .section__title {
+        font-size: clamp(32px, 11vw, 48px);
+      }
+
+      .card__title {
+        font-size: 38px;
+      }
+
+      .card__body {
+        padding: 18px 16px 20px;
+      }
+
+      .modal__title {
+        font-size: 34px;
+      }
+
+      .modal__panel {
+        padding: 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card {
+        animation: none;
+        transform: none;
+        opacity: 1;
+      }
+
+      .card,
+      .social-icon,
+      .topbar__nav a,
+      .faq__item {
+        transition: none;
+      }
     }
   </style>
 </head>
@@ -543,18 +700,18 @@
     <header class="topbar">
     <div class="topbar__inner">
       <div class="topbar__left">
-        <div class="topbar__brand">Мягкая мебель</div>
+        <div class="topbar__brand">SmartSofa</div>
         <nav class="topbar__nav">
           <a href="#faq">FAQ</a>
         </nav>
       </div>
       <div class="topbar__right">
         <div class="topbar__contacts">
-          <a class="topbar__link" href="tel:+79029822386">+7 (902) 982-23-86</a>
+          <a class="topbar__link" href="tel:+79811607221">+7 981 160 7221</a>
           <a class="topbar__link" href="mailto:ru@tammantimebel.ru">ru@tammantimebel.ru</a>
         </div>
         <div class="topbar__socials" aria-label="Соцсети">
-          <a class="social-icon" href="https://wa.me/79029822386" target="_blank" rel="noreferrer noopener" aria-label="WhatsApp">
+          <a class="social-icon" href="https://wa.me/79811607221" target="_blank" rel="noreferrer noopener" aria-label="WhatsApp">
             <svg viewBox="0 0 32 32" role="img" aria-hidden="true">
               <path fill="currentColor" d="M16 3C9.4 3 4 8.2 4 14.6c0 2.6.9 5 2.4 6.9L5 29l7.7-2.3c1.1.3 2.2.5 3.3.5 6.6 0 12-5.2 12-11.6S22.6 3 16 3Zm0 2.2c5.4 0 9.8 4.1 9.8 9.4S21.4 24 16 24c-1.1 0-2.2-.2-3.2-.6l-.7-.2-4.5 1.4 1.4-4.3-.5-.7C7.7 18.2 7 16.4 7 14.6c0-5.3 4.4-9.4 9-9.4Zm-4.1 6.4c-.2 0-.4 0-.6.2-.2.2-.8.8-.8 1.9s.8 2.3 1 2.5c.1.2 1.7 2.7 4.1 3.7 2 1 2.4.8 2.8.7.4-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1-.1-.1-.4-.2-.9-.5-.5-.2-1.3-.6-1.5-.7-.2-.1-.4-.2-.6.2-.2.4-.7.7-.9.9-.1.1-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.7-1.4-1.6-1.6-1.9-.1-.2 0-.4.1-.5.1-.1.2-.3.3-.4.1-.1.2-.2.3-.4.1-.1.1-.3 0-.5-.1-.2-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4Z"/>
             </svg>
@@ -577,41 +734,74 @@
   <div class="page">
     <section class="hero">
       <div class="hero__eyebrow">Коллекция</div>
-      <h1 class="hero__title">Два дивана, только самое нужное</h1>
-      <p class="hero__subtitle">Короткий и понятный каталог: две модели, две атмосферы, никакого лишнего контента.</p>
+      <h1 class="hero__title">SmartSofa</h1>
+      <p class="hero__subtitle">Первый в России производитель бескаркасной мебели полного цикла. Благодаря специализированному оборудованию и отлаженным производственным процессам мы создаём диваны без компромиссов по качеству — и выполняем заказы быстро, будь то стандартные модели или индивидуальные решения под ваши размеры и задачи.</p>
       <div class="hero__art">
-        <img src="assets/sofa1-1.jpg" alt="Иллюстрация коллекции диванов" />
+        <img src="assets/sofa2-1.jpg" alt="Иллюстрация коллекции диванов" />
       </div>
     </section>
 
     <section class="section">
       <div class="section__eyebrow">Каталог</div>
-      <h2 class="section__title">Два дивана в наличии</h2>
+      <h2 class="section__title">Диваны в наличии</h2>
       <div class="products">
-        <article class="card" data-title="Диван 1" data-images="assets/sofa1-1.jpg,assets/sofa1-2.jpg,assets/sofa1-3.jpg,assets/sofa1-4.jpg,assets/sofa1-5.jpg">
-          <div class="card__media" style="background-image: url('assets/sofa1-1.jpg');">
-            <div class="card__badge">Диван 1</div>
+        <article class="card" data-title="unnamed" data-images="unnamed/2026-03-05 13.21.31.jpg,unnamed/2026-03-05 13.21.53.jpg,unnamed/2026-03-05 13.21.58.jpg,unnamed/2026-03-05 13.22.02.jpg,unnamed/2026-03-05 13.22.08.jpg,unnamed/2026-03-05 13.22.13.jpg,unnamed/2026-03-05 13.22.16.jpg">
+          <div class="card__media" style="background-image: url('unnamed/2026-03-05 13.21.31.jpg');">
+            <div class="card__badge">unnamed</div>
           </div>
           <div class="card__body">
-            <h3 class="card__title">Диван 1</h3>
-            <p class="card__text">Уютная форма и мягкая посадка. Идеален для спокойного отдыха и вечерних фильмов.</p>
-            <div class="card__price">59 000 ₽</div>
+            <h3 class="card__title">unnamed</h3>
+            <p class="card__text">Это идеальный выбор для людей, выбирающих комфорт, функциональность и актуальный стиль. Ортопедический наполнитель, независимые матрасы и съёмные чехлы делают диван Тедди очень практичным и современным.</p>
+            <p class="card__text">Диван легко трансформируется в удобное спальное место 180х200 см. Диван легко передвигать по дому, что упрощает уборку. Пожизненная гарантия на отсутствие скрипа.</p>
+            <div class="card__price">Размеры: 160*100, 180*100, 200*100, также свой размер</div>
             <div class="card__cta">Смотреть фото</div>
           </div>
-          <button class="card__hit" type="button" data-modal-open aria-label="Смотреть больше фото дивана 1">Смотреть больше фото дивана 1</button>
+          <button class="card__hit" type="button" data-modal-open aria-label="Смотреть больше фото дивана unnamed">Смотреть больше фото дивана unnamed</button>
         </article>
 
-        <article class="card" data-title="Диван 2" data-images="assets/sofa2-1.jpg,assets/sofa2-2.jpg,assets/sofa2-3.jpg">
-          <div class="card__media" style="background-image: url('assets/sofa2-1.jpg');">
-            <div class="card__badge">Диван 2</div>
+        <article class="card" data-title="ДеФранс" data-images="defrance/2026-03-05 13.19.58.jpg,defrance/2026-03-05 13.20.04.jpg,defrance/2026-03-05 13.20.09.jpg,defrance/2026-03-05 13.20.13.jpg,defrance/2026-03-05 13.20.20.jpg">
+          <div class="card__media" style="background-image: url('defrance/2026-03-05 13.19.58.jpg');">
+            <div class="card__badge">ДеФранс</div>
           </div>
           <div class="card__body">
-            <h3 class="card__title">Диван 2</h3>
-            <p class="card__text">Лаконичный силуэт и просторное место для сна. Подходит для современных интерьеров.</p>
-            <div class="card__price">64 000 ₽</div>
+            <h3 class="card__title">ДеФранс</h3>
+            <p class="card__text">Бескаркасный диван ДеФранс (Француз) создан по уникальной технологии. Это не кресло-мешок, ДеФранс (Француз) держит форму и при этом подстраивается под ваше тело в любом положении.</p>
+            <p class="card__text">Дизайнерский внешний вид, эргономичное удобство и невероятная легкость. Диван ДеФранс (Француз) весит всего 22 кг.</p>
+            <p class="card__text">Для удобства доставки мы вакуумируем диван ДеФранс (Француз), так что вы без труда заберете его из пункта выдачи. После распаковки диван полностью восстанавливается в течение 2-5 дней.</p>
+            <div class="card__price">Размеры: 90*101, 130*101, 160*101, 210*101</div>
             <div class="card__cta">Смотреть фото</div>
           </div>
-          <button class="card__hit" type="button" data-modal-open aria-label="Смотреть больше фото дивана 2">Смотреть больше фото дивана 2</button>
+          <button class="card__hit" type="button" data-modal-open aria-label="Смотреть больше фото дивана ДеФранс">Смотреть больше фото дивана ДеФранс</button>
+        </article>
+
+        <article class="card" data-title="Тофу" data-images="tofu/2026-03-05 13.24.47.jpg,tofu/2026-03-05 13.24.56.jpg,tofu/2026-03-05 13.25.03.jpg">
+          <div class="card__media" style="background-image: url('tofu/2026-03-05 13.24.47.jpg');">
+            <div class="card__badge">Тофу</div>
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Тофу</h3>
+            <p class="card__text">Бескаркасный диван «Тофу» — это современная модель с мягкой геометрией и продуманным комфортом. Он выглядит лаконично и основательно, при этом создаёт ощущение уюта и расслабленной домашней атмосферы.</p>
+            <p class="card__text">Низкая посадка, широкие модули и глубокое сиденье делают диван удобным для отдыха в любом формате — от спокойных вечеров с книгой до встреч с близкими. Угловая конфигурация позволяет комфортно разместиться всей семье, а также организовать полноценную зону релакса в гостиной.</p>
+            <p class="card__text">Главная особенность модели — сочетание бескаркасной конструкции и внутреннего пружинного блока. Диван остаётся мягким и визуально лёгким, но при этом обеспечивает стабильную поддержку и сохраняет форму даже при ежедневной эксплуатации. Посадка получается комфортной, без излишней «проваливаемости».</p>
+            <div class="card__price">Размер: 263*175</div>
+            <div class="card__cta">Смотреть фото</div>
+          </div>
+          <button class="card__hit" type="button" data-modal-open aria-label="Смотреть больше фото дивана Тофу">Смотреть больше фото дивана Тофу</button>
+        </article>
+
+        <article class="card" data-title="Дадли" data-images="dadly/2026-03-05 13.18.12.jpg,dadly/2026-03-05 13.18.27.jpg,dadly/2026-03-05 13.18.33.jpg,dadly/2026-03-05 13.18.38.jpg,dadly/2026-03-05 13.18.43.jpg">
+          <div class="card__media" style="background-image: url('dadly/2026-03-05 13.18.12.jpg');">
+            <div class="card__badge">Дадли</div>
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Дадли</h3>
+            <p class="card__text">Бескаркасный диван «Тофу» — это современная модель с мягкой геометрией и продуманным комфортом. Он выглядит лаконично и основательно, при этом создаёт ощущение уюта и расслабленной домашней атмосферы.</p>
+            <p class="card__text">Низкая посадка, широкие модули и глубокое сиденье делают диван удобным для отдыха в любом формате — от спокойных вечеров с книгой до встреч с близкими. Угловая конфигурация позволяет комфортно разместиться всей семье, а также организовать полноценную зону релакса в гостиной.</p>
+            <p class="card__text">Главная особенность модели — сочетание бескаркасной конструкции и внутреннего пружинного блока. Диван остаётся мягким и визуально лёгким, но при этом обеспечивает стабильную поддержку и сохраняет форму даже при ежедневной эксплуатации. Посадка получается комфортной, без излишней «проваливаемости».</p>
+            <div class="card__price">Размеры: 150*120, 180*120, 200*120, также можно сделать свой размер</div>
+            <div class="card__cta">Смотреть фото</div>
+          </div>
+          <button class="card__hit" type="button" data-modal-open aria-label="Смотреть больше фото дивана Дадли">Смотреть больше фото дивана Дадли</button>
         </article>
       </div>
     </section>
@@ -621,16 +811,52 @@
       <h2 class="section__title">Частые вопросы</h2>
       <div class="faq">
         <details class="faq__item">
-          <summary>Вопрос 1 (плейсхолдер)</summary>
-          <p>Ответ 1 (плейсхолдер): добавьте информацию о доставке, сроках и условиях.</p>
+          <summary>Что такое бескаркасный диван?</summary>
+          <p>Это модульная мебель без жестких элементов (дерева, металла или пластика). Диван состоит из блоков плотного наполнителя, что делает его на 100% мягким и безопасным для детей.</p>
         </details>
         <details class="faq__item">
-          <summary>Вопрос 2 (плейсхолдер)</summary>
-          <p>Ответ 2 (плейсхолдер): уточните варианты тканей и доступные цвета.</p>
+          <summary>Можно ли использовать его для ежедневного сна?</summary>
+          <p>Да, диван легко трансформируется в полноценное спальное место. Плотный наполнитель (ППУ) обеспечивает комфортную поддержку, сравнимую с матрасами средней жесткости.</p>
         </details>
         <details class="faq__item">
-          <summary>Вопрос 3 (плейсхолдер)</summary>
-          <p>Ответ 3 (плейсхолдер): расскажите о гарантии и уходе за обивкой.</p>
+          <summary>Какую нагрузку выдерживает диван?</summary>
+          <p>Конструкция рассчитана на стандартные нагрузки: до 120 кг на одно спальное место. Благодаря отсутствию каркаса в нем просто нечему ломаться.</p>
+        </details>
+        <details class="faq__item">
+          <summary>В каком виде доставляется диван?</summary>
+          <p>Диван поставляется в двух коробках, каждая из которых весит не более 16 кг. Диваны находятся в вакуумной упаковке для компактности.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Как быстро диван примет форму после распаковки?</summary>
+          <p>Основные блоки расправляются практически сразу после снятия вакуумной пленки. Однако для полного восстановления формы мелких деталей может потребоваться до 3 дней.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Нужны ли инструменты для сборки?</summary>
+          <p>Нет, инструменты не требуются. Модули соединяются между собой или просто выкладываются в нужной конфигурации, так как диван не имеет сложных механизмов трансформации.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Как чистить бескаркасные диваны?</summary>
+          <p>Диваны комплектуются съемными чехлами на молниях. Их можно стирать в стиральной машине на деликатном режиме при температуре не выше 30&deg;C.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Можно ли заказать дополнительные чехлы?</summary>
+          <p>Да, мы предлагаем на выбор различные ткани (велюр, вельвет, антивандальные материалы) и возможность заказа сменных чехлов другого цвета.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Не просядет ли наполнитель со временем?</summary>
+          <p>При длительной эксплуатации любой бескаркасный наполнитель может немного уплотняться. Однако качественный ППУ в наших диванах держит форму годами, не образуя следов продавливания.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Как выбрать ткань, если я покупаю онлайн?</summary>
+          <p>Вы можете запросить каталог возможных тканей при оформлении заказа, мы во всем вас проконсультируем.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Безопасен ли диван для аллергиков?</summary>
+          <p>В производстве используются гипоаллергенные наполнители и ткани, которые не накапливают пыль так сильно, как классические пружинные модели.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Где производятся диваны?</summary>
+          <p>Диваны производятся на собственных производственных мощностях нашей компании в Воронеже.</p>
         </details>
       </div>
     </section>
@@ -638,17 +864,17 @@
 
   <footer class="footer">
     <div class="footer__inner">
-      <div class="footer__brand">Мягкая мебель</div>
+      <div class="footer__brand">SmartSofa</div>
       <div class="footer__links">
         <a href="#faq">FAQ</a>
       </div>
       <div class="footer__contacts">
-        <a href="tel:+79029822386">+7 (902) 982-23-86</a>
+        <a href="tel:+79811607221">+7 981 160 7221</a>
         <a href="mailto:ru@tammantimebel.ru">ru@tammantimebel.ru</a>
-        <span>Москва · Красноярск</span>
+        <span>Воронеж</span>
       </div>
       <div class="footer__socials" aria-label="Соцсети">
-        <a class="social-icon" href="https://wa.me/79029822386" target="_blank" rel="noreferrer noopener" aria-label="WhatsApp">
+        <a class="social-icon" href="https://wa.me/79811607221" target="_blank" rel="noreferrer noopener" aria-label="WhatsApp">
           <svg viewBox="0 0 32 32" role="img" aria-hidden="true">
             <path fill="currentColor" d="M16 3C9.4 3 4 8.2 4 14.6c0 2.6.9 5 2.4 6.9L5 29l7.7-2.3c1.1.3 2.2.5 3.3.5 6.6 0 12-5.2 12-11.6S22.6 3 16 3Zm0 2.2c5.4 0 9.8 4.1 9.8 9.4S21.4 24 16 24c-1.1 0-2.2-.2-3.2-.6l-.7-.2-4.5 1.4 1.4-4.3-.5-.7C7.7 18.2 7 16.4 7 14.6c0-5.3 4.4-9.4 9-9.4Zm-4.1 6.4c-.2 0-.4 0-.6.2-.2.2-.8.8-.8 1.9s.8 2.3 1 2.5c.1.2 1.7 2.7 4.1 3.7 2 1 2.4.8 2.8.7.4-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1-.1-.1-.4-.2-.9-.5-.5-.2-1.3-.6-1.5-.7-.2-.1-.4-.2-.6.2-.2.4-.7.7-.9.9-.1.1-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.7-1.4-1.6-1.6-1.9-.1-.2 0-.4.1-.5.1-.1.2-.3.3-.4.1-.1.2-.2.3-.4.1-.1.1-.3 0-.5-.1-.2-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4Z"/>
           </svg>
@@ -664,7 +890,7 @@
           </svg>
         </a>
       </div>
-      <div class="footer__copy">© 2026 Мягкая мебель</div>
+      <div class="footer__copy">© 2026 SmartSofa</div>
     </div>
   </footer>
 
@@ -785,4 +1011,3 @@
   </script>
 </body>
 </html>
-
