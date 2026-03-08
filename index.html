@@ -636,7 +636,18 @@
       }
 
       .products {
-        grid-template-columns: 1fr;
+        grid-template-columns: unset;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(78%, 1fr);
+        gap: 16px;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .products > .card {
+        scroll-snap-align: start;
       }
     }
 
